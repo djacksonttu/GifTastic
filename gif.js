@@ -4,7 +4,7 @@ $(document).ready(function(){
     
 
  
-    function buttonExpress(){
+    function buttonAthlete(){
         $('#buttonsBox').empty();
         
         for ( var i=0; i < topics.length; i++) {
@@ -16,7 +16,7 @@ $(document).ready(function(){
             $('#buttonsBox').append(a);
         }
     }    
-    buttonExpress();
+    buttonAthlete();
    
 
   $(document).on('click', '.clicker', function() {
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
             var results = response.data;
            
-            $('#expressView').empty();
+            $('#athleteView').empty();
                
 
                 for ( var L =0; L < results.length; L++) {
@@ -42,16 +42,16 @@ $(document).ready(function(){
                     var still = results[L].images.fixed_height_still.url;
                        
                     
-                    var expressImage = $('<img>').attr("src", still).attr('data-animate', imageView).attr('data-still', still);
-                    expressImage.attr('data-state', 'still');
-                    $('#expressView').prepend(expressImage);
-                    expressImage.on('click', startGif);
+                    var athleteImage = $('<img>').attr("src", still).attr('data-animate', imageView).attr('data-still', still);
+                    athleteImage.attr('data-state', 'still');
+                    $('#athleteView').prepend(athleteImage);
+                    athleteImage.on('click', startGif);
                     
                    
                         var rating = results[L].rating;
                             console.log(rating);
                         var displayRated= $('<p>').text("Rating: " + rating);
-                        $('#expressView').prepend(displayRated);
+                        $('#athleteView').prepend(displayRated);
             
                 } 
         }); 
@@ -73,15 +73,15 @@ $(document).ready(function(){
 
        
 
-$(document).on('click', '#addExpress', function(){
-    if ($('#express-input').val().trim() == ''){
+$(document).on('click', '#addAthlete', function(){
+    if ($('#athlete-input').val().trim() == ''){
       alert('please add athlete');
    }
    else {
-    var athlete = $('#express-input').val().trim();
+    var athlete = $('#athlete-input').val().trim();
     topics.push(athlete);
-    $('#express-input').val('');
-    buttonExpress();
+    $('#athlete-input').val('');
+    buttonAthlete();
     return false;
 
     }
